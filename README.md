@@ -1,1 +1,1 @@
-# NewTechnologies_-team-NT-
+# NewTechnologies_team NT

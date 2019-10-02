@@ -40,4 +40,9 @@ public class Line : MonoBehaviour
 
     }
 
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
 }

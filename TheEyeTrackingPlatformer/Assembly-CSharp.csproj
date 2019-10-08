@@ -67,6 +67,13 @@
     <Compile Include="Assets\Draw\Line.cs" />
     <Compile Include="Assets\Draw\LineCreator.cs" />
     <Compile Include="Assets\lightBehavior.cs" />
+    <Compile Include="Assets\Scripts\Enemy2Contoroller.cs" />
+    <Compile Include="Assets\Scripts\Enemy3Contoroller.cs" />
+    <Compile Include="Assets\Scripts\EnemyArea.cs" />
+    <Compile Include="Assets\Scripts\EnemyCollider.cs" />
+    <Compile Include="Assets\Scripts\EnemyContoroller.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Shot.cs" />
     <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUI.cs" />
     <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIForCanvas.cs" />
     <Compile Include="Assets\Tobii\DemoScenes\Scripts\CleanUIOpacityOverrideForCanvas.cs" />

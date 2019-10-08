@@ -6,7 +6,8 @@ public class LineCreator : MonoBehaviour
 {
 
     public GameObject linePrefab;
-
+    public Material spriteMaterial;
+    LineRenderer myRenderer;
     Line activeLine;
     private Rigidbody2D rigidbody;
 
@@ -21,11 +22,15 @@ public class LineCreator : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+
+            int massOfBody = activeLine.numberOfPoints;
+            
             activeLine.CloseLine();
+            myRenderer = activeLine.GetComponent<LineRenderer>();
             activeLine = null;
             rigidbody.bodyType = RigidbodyType2D.Dynamic;
-            
-            rigidbody.mass = 1000;
+            myRenderer.material = spriteMaterial; 
+            rigidbody.mass = massOfBody*60;
         }
 
         if (activeLine != null)

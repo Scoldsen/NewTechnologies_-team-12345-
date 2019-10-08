@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5336432034094199013
+--- !u!1 &5193009603735616489
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8331839127955626895}
-  - component: {fileID: 5136874145026700229}
-  - component: {fileID: 314708881728597501}
-  - component: {fileID: 8712836568738458334}
-  - component: {fileID: 8626966573309397772}
+  - component: {fileID: 1975743190136005994}
+  - component: {fileID: 7283045977694255554}
+  - component: {fileID: 9014998444972085486}
+  - component: {fileID: 773585044566276163}
+  - component: {fileID: 8718114734539726136}
   m_Layer: 0
-  m_Name: Line
+  m_Name: Line(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8331839127955626895
+--- !u!4 &1975743190136005994
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336432034094199013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5193009603735616489}
+  m_LocalRotation: {x: 0, y: 0, z: 0.04228591, w: 0.99910563}
+  m_LocalPosition: {x: 0.10910559, y: -4.611377, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &5136874145026700229
+--- !u!120 &7283045977694255554
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336432034094199013}
+  m_GameObject: {fileID: 5193009603735616489}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -73,8 +73,31 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
+  - {x: -6.426736, y: 1.6147908, z: 0}
+  - {x: -6.296528, y: 1.6147908, z: 0}
+  - {x: -6.192361, y: 1.6408321, z: 0}
+  - {x: -6.062153, y: 1.6408321, z: 0}
+  - {x: -5.9319444, y: 1.6408321, z: 0}
+  - {x: -5.801736, y: 1.6408321, z: 0}
+  - {x: -5.671528, y: 1.6408321, z: 0}
+  - {x: -5.515278, y: 1.6408321, z: 0}
+  - {x: -5.411111, y: 1.6408321, z: 0}
+  - {x: -5.3069444, y: 1.6408321, z: 0}
+  - {x: -5.176736, y: 1.6147908, z: 0}
+  - {x: -5.0725694, y: 1.5887489, z: 0}
+  - {x: -4.890278, y: 1.5627071, z: 0}
+  - {x: -4.786111, y: 1.5627071, z: 0}
+  - {x: -4.577778, y: 1.5366658, z: 0}
+  - {x: -4.4475694, y: 1.5366658, z: 0}
+  - {x: -4.317361, y: 1.6147908, z: 0}
+  - {x: -4.187153, y: 1.7189571, z: 0}
+  - {x: -4.161111, y: 1.8231239, z: 0}
+  - {x: -4.109028, y: 1.9272909, z: 0}
+  - {x: -4.082986, y: 2.109582, z: 0}
+  - {x: -4.109028, y: 2.265832, z: 0}
+  - {x: -4.187153, y: 2.369999, z: 0}
+  - {x: -4.317361, y: 2.500207, z: 0}
+  - {x: -6.426736, y: 1.6147908, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.08
@@ -130,19 +153,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!50 &314708881728597501
+--- !u!50 &9014998444972085486
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336432034094199013}
-  m_BodyType: 1
+  m_GameObject: {fileID: 5193009603735616489}
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -151,13 +174,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &8712836568738458334
+--- !u!60 &773585044566276163
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336432034094199013}
+  m_GameObject: {fileID: 5193009603735616489}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -176,23 +199,43 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5, y: 0.54}
-      - {x: -0.013570547, y: 0.16686918}
-      - {x: 0.182596, y: -0.43686923}
-      - {x: 0.81740415, y: -0.43686917}
-      - {x: 1.0135705, y: 0.16686925}
---- !u!114 &8626966573309397772
+    - - {x: -6.426736, y: 1.6147908}
+      - {x: -6.296528, y: 1.6147908}
+      - {x: -6.192361, y: 1.6408321}
+      - {x: -6.062153, y: 1.6408321}
+      - {x: -5.9319444, y: 1.6408321}
+      - {x: -5.801736, y: 1.6408321}
+      - {x: -5.671528, y: 1.6408321}
+      - {x: -5.515278, y: 1.6408321}
+      - {x: -5.411111, y: 1.6408321}
+      - {x: -5.3069444, y: 1.6408321}
+      - {x: -5.176736, y: 1.6147908}
+      - {x: -5.0725694, y: 1.5887489}
+      - {x: -4.890278, y: 1.5627071}
+      - {x: -4.786111, y: 1.5627071}
+      - {x: -4.577778, y: 1.5366658}
+      - {x: -4.4475694, y: 1.5366658}
+      - {x: -4.317361, y: 1.6147908}
+      - {x: -4.187153, y: 1.7189571}
+      - {x: -4.161111, y: 1.8231239}
+      - {x: -4.109028, y: 1.9272909}
+      - {x: -4.082986, y: 2.109582}
+      - {x: -4.109028, y: 2.265832}
+      - {x: -4.187153, y: 2.369999}
+      - {x: -4.317361, y: 2.500207}
+      - {x: -6.426736, y: 1.6147908}
+--- !u!114 &8718114734539726136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336432034094199013}
+  m_GameObject: {fileID: 5193009603735616489}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5deb923174e3914591027f94495cba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 5136874145026700229}
-  polygon: {fileID: 8712836568738458334}
-  rigidBody: {fileID: 314708881728597501}
+  lineRenderer: {fileID: 7283045977694255554}
+  polygon: {fileID: 773585044566276163}
+  pointCount: 25

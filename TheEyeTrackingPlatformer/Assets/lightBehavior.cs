@@ -6,7 +6,6 @@ using Tobii.Gaming;
 public class lightBehavior : MonoBehaviour
 {
     [SerializeField]
-    public bool keyboardActivated;
     UnityEngine.Experimental.Rendering.LWRP.Light2D m_Light2D = null;
     private GazePoint _lastGazePoint = GazePoint.Invalid;
     private bool _hasHistoricPoint;
@@ -15,8 +14,6 @@ public class lightBehavior : MonoBehaviour
     public float VisualizationDistance = 10f;
     //responsiveness filter, lower - more responsive, max is 1
     public float FilterSmoothingFactor = 0.15f;
-    public float speed = 0.1f;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -27,26 +24,17 @@ public class lightBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!keyboardActivated)
+        checkForEyesClosing();
+        GazePoint gazePoint = TobiiAPI.GetGazePoint();
+
+        if (gazePoint.IsRecent()
+            && gazePoint.Timestamp > (_lastGazePoint.Timestamp + float.Epsilon))
         {
-            checkForEyesClosing();
-            GazePoint gazePoint = TobiiAPI.GetGazePoint();
-
-            if (gazePoint.IsRecent()
-                && gazePoint.Timestamp > (_lastGazePoint.Timestamp + float.Epsilon))
-            {
-
+            
                 UpdateGazeBubblePosition(gazePoint);
+            
 
-
-                _lastGazePoint = gazePoint;
-            }
-        } else
-        {
-            float vertical = Input.GetAxis("Vertical");
-            float horizontal = Input.GetAxis("Horizontal");
-            Vector2 direction = new Vector2(horizontal*0.1f, vertical*0.1f);
-            transform.Translate(direction);
+            _lastGazePoint = gazePoint;
         }
 
         

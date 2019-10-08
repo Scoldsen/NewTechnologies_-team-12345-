@@ -7,16 +7,13 @@ public class Line : MonoBehaviour
 
     public LineRenderer lineRenderer;
     public PolygonCollider2D polygon;
-    public int numberOfPoints;
+
+    public int pointCount = 0;
+
     List<Vector2> points;
 
     public void UpdateLine(Vector2 mousePos)
     {
-        if(points!=null)
-        {
-            numberOfPoints = points.Count;
-        }
-
         if (points == null)
         {
             points = new List<Vector2>();
@@ -34,6 +31,7 @@ public class Line : MonoBehaviour
         SetPoint(vector);
 
         polygon.SetPath(0, points);
+        pointCount = points.Count;
     }
 
     void SetPoint(Vector2 point)

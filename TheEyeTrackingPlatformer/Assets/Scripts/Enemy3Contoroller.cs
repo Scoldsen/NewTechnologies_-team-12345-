@@ -32,7 +32,7 @@ public class Enemy3Contoroller : MonoBehaviour
         {
             if (!shotFlag)
             {
-                Debug.Log("hi");
+                
                 GameObject shot = Instantiate(shotPrefab);
                 shot.transform.position = transform.position;
 

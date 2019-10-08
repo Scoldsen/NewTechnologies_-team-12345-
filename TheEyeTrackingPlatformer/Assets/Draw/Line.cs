@@ -9,6 +9,9 @@ public class Line : MonoBehaviour
     public PolygonCollider2D polygon;
     public int numberOfPoints;
     List<Vector2> points;
+    gameManager gm;
+
+
 
     public void UpdateLine(Vector2 mousePos)
     {
@@ -34,6 +37,7 @@ public class Line : MonoBehaviour
         SetPoint(vector);
 
         polygon.SetPath(0, points);
+       
     }
 
     void SetPoint(Vector2 point)
@@ -47,7 +51,21 @@ public class Line : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gm = GameObject.Find("_gm").GetComponent<gameManager>();
+        gm.removeDrawingAmount(gameObject.GetComponent<Rigidbody2D>().mass);
         Destroy(gameObject);
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gm = GameObject.Find("_gm").GetComponent<gameManager>();
+        gm.removeDrawingAmount(gameObject.GetComponent<Rigidbody2D>().mass);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }

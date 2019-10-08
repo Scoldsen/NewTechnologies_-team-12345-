@@ -62,10 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BossBehavior.cs" />
     <Compile Include="Assets\cameraPan.cs" />
+    <Compile Include="Assets\CameraShake.cs" />
     <Compile Include="Assets\ChildBehavior.cs" />
     <Compile Include="Assets\Draw\Line.cs" />
     <Compile Include="Assets\Draw\LineCreator.cs" />
+    <Compile Include="Assets\gameManager.cs" />
     <Compile Include="Assets\lightBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy2Contoroller.cs" />
     <Compile Include="Assets\Scripts\Enemy3Contoroller.cs" />

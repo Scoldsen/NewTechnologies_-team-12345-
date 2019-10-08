@@ -13,6 +13,7 @@ public class ChildBehavior : MonoBehaviour
     public GameObject theLight;
     Vector2 lightPosition;
     Vector2 myPosition;
+    public int health = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class ChildBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkForDeath();
         checkIfInLight();
         myPosition = transform.position;
         lightPosition = theLight.transform.position;
@@ -32,6 +34,13 @@ public class ChildBehavior : MonoBehaviour
         
     }
 
+    void checkForDeath()
+    {
+        if(health<=0)
+        {
+            Debug.Log("Game over");
+        }
+    }
     void checkIfInLight()
     {
         if(Vector2.Distance(myPosition,lightPosition) <= maxLightDistance)
@@ -68,6 +77,14 @@ public class ChildBehavior : MonoBehaviour
 //            mybody.MovePosition(Vector3.Lerp(myPosition, new Vector2(lightPosition.x, myPosition.y), movementSpeedFactor));
                
             
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            health--;         
         }
     }
 }

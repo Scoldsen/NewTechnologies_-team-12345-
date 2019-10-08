@@ -30,6 +30,15 @@ public class cameraPan : MonoBehaviour
             {
                 camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - new Vector3(3, 0, 0), 0.03f);
             }
+
+            if (gPoint.Viewport.y > 0.9f)
+            {
+                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0, 3, 0), 0.03f);
+            }
+            if (gPoint.Viewport.y < 0.1f)
+            {
+                camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - new Vector3(0, 3, 0), 0.03f);
+            }
         }
 
 
@@ -42,6 +51,14 @@ public class cameraPan : MonoBehaviour
         if (myPositionOnScreen.x < 0.1f)
         {
             camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - new Vector3(3, 0, 0), 0.03f);
+        }
+        if (myPositionOnScreen.y > 0.9f)
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position + new Vector3(0, 3, 0), 0.03f);
+        }
+        if (myPositionOnScreen.y < 0.1f)
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, camera.transform.position - new Vector3(0, 3, 0), 0.03f);
         }
 
 

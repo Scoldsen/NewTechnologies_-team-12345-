@@ -87,8 +87,14 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Path.Editor">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
@@ -114,8 +120,17 @@
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
@@ -123,17 +138,29 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -329,6 +356,9 @@
     </Reference>
     <Reference Include="Tobii.GameIntegration.Net">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Assets/Tobii/Plugins/Tobii.GameIntegration.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/PackageCache/com.unity.2d.common@1.2.0-preview.1/Tests/Editor/Lib/NSubstitute/NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/Henk/Documents/sourcetree projecten/NewTechnologies/TheEyeTrackingPlatformer/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

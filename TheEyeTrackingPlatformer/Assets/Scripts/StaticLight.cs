@@ -33,7 +33,9 @@ public class StaticLight : MonoBehaviour
 
     void Update()
     {
-        distance = Vector2.Distance(transform.position, enemy.transform.position);
+        if (enemy == null) return;
+        distance = Mathf.Abs(enemy.transform.position.x - transform.position.x);
+        //distance = Vector2.Distance(transform.position, enemy.transform.position);
         int mode = distance < minDistance ? 2 : distance < maxDistance ? 1 : 0;
 
         switch (mode)

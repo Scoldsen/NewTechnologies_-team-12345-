@@ -16,13 +16,20 @@ public class ChildBehavior : MonoBehaviour
     bool onGround = false;
     public int health = 3;
     int direction = 0; // 0 is right and 1 is left.
-    // Start is called before the first frame update
-    void Start()
+
+    Vector3 pos = Vector3.zero;
+    Vector3 posOld = Vector3.zero;
+
+    //public bool walking = false;
+
+    public Animator animator;
+
+    private void Start()
     {
-       
+        pos = transform.position;
+        posOld = pos;
     }
 
-    // Update is called once per frame
     void Update()
     {
         checkForDeath();
@@ -31,10 +38,19 @@ public class ChildBehavior : MonoBehaviour
         myPosition = transform.position;
         lightPosition = theLight.transform.position;
        
-         moveTowardsLight();
-       
-           // Debug.Log("Not in light, losing health");
-        
+        moveTowardsLight();
+
+        pos = transform.position;
+
+        if (posOld != pos)
+        {
+            float distance = Vector3.Distance(pos, posOld);
+            print(distance);
+            posOld = pos;
+            animator.SetBool("isWalking", true);
+        } 
+        else animator.SetBool("isWalking", false);
+
     }
 
     void checkForDeath()

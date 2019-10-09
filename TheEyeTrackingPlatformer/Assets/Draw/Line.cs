@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
+    public List<GameObject> gameobjects;
+    public int listSize, listSizeOld = 0;
+
+    public breakablePlank plank;
+    public breakablePlank lastPlank;
+
+    public int collidesWithNshapes;
+    public bool collidesWithPlank = false;
+
+    public Rigidbody2D rb;
+    public float mass = 0;
 
     public LineRenderer lineRenderer;
     public PolygonCollider2D polygon;
@@ -61,8 +72,35 @@ public class Line : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameObject go = collision.gameObject;
+        Line lineObj = go.GetComponent<Line>();
+        breakablePlank plankObj = go.GetComponent<breakablePlank>();
+
+        //botst met lineobj
+        if (plankObj != null)
+        {
+            collidesWithPlank = true;
+            plank = plankObj;
+        }
+
+        else if (lineObj != null)
+        {
+            if (lineObj.plank != null) plank = lineObj.plank;
+            collidesWithNshapes++;
+        }
+
+        if (plank != null && !plank.gameobjects.Contains(gameObject))
+        {
+            plank.gameobjects.Add(gameObject);
+        }
+
         gm = GameObject.Find("_gm").GetComponent<gameManager>();
         
         if (collision.gameObject.CompareTag("Enemy"))
@@ -71,6 +109,26 @@ public class Line : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        GameObject go = collision.gameObject;
+        Line lineObj = go.GetComponent<Line>();
+        breakablePlank plankObj = go.GetComponent<breakablePlank>();
+
+        if (lineObj != null) collidesWithNshapes--;
+
+        else if (plankObj != null)
+        {
+            collidesWithPlank = false;
+        }
+
+        if (!collidesWithPlank && collidesWithNshapes == 0 && plank != null)
+        {
+            plank.gameobjects.Remove(gameObject);
+            plank = null;
+        }
     }
 
 }

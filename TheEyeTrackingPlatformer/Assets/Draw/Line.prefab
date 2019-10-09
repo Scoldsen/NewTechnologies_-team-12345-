@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8626966573309397772}
   m_Layer: 0
   m_Name: Line
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,3 +195,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 5136874145026700229}
   polygon: {fileID: 8712836568738458334}
+  numberOfPoints: 0

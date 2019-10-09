@@ -32,10 +32,13 @@ public class LineCreator : MonoBehaviour
         {
 
             int massOfBody = activeLine.numberOfPoints;
+            if (activeLine != null)
+            {
+                activeLine.CloseLine();
+                myRenderer = activeLine.GetComponent<LineRenderer>();
+                activeLine = null;
+            }
             
-            activeLine.CloseLine();
-            myRenderer = activeLine.GetComponent<LineRenderer>();
-            activeLine = null;
             rigidbody.bodyType = RigidbodyType2D.Dynamic;
             myRenderer.material = spriteMaterial; 
             rigidbody.mass = massOfBody*60;

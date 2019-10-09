@@ -7,17 +7,21 @@ using Tobii.Gaming;
 public class cameraPan : MonoBehaviour
 {
     public GameObject camera;
+    Vector3 originalPos;
     Camera cam;
     private GazePoint gPoint;
     // Start is called before the first frame update
     void Start()
     {
         cam = camera.GetComponent<Camera>();
+        originalPos = camera.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        KeepItInBounds();
+
         gPoint = TobiiAPI.GetGazePoint();
         if(gPoint.IsRecent())
             
@@ -62,5 +66,18 @@ public class cameraPan : MonoBehaviour
         }
 
 
+    }
+
+    public void KeepItInBounds()
+    {
+        if(camera.transform.position.y > originalPos.y + 1f)
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, originalPos.y + 1f, camera.transform.position.z);
+        }
+
+        if (camera.transform.position.y < originalPos.y - 1f)
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x, originalPos.y - 1f, camera.transform.position.z);
+        }
     }
 }

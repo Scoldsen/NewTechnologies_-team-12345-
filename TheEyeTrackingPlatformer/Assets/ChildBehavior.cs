@@ -13,7 +13,9 @@ public class ChildBehavior : MonoBehaviour
     public GameObject theLight;
     Vector2 lightPosition;
     Vector2 myPosition;
+    bool onGround = false;
     public int health = 3;
+    int direction = 0; // 0 is right and 1 is left.
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class ChildBehavior : MonoBehaviour
     {
         checkForDeath();
         checkIfInLight();
+        checkIfOnGround();
         myPosition = transform.position;
         lightPosition = theLight.transform.position;
        
@@ -63,21 +66,71 @@ public class ChildBehavior : MonoBehaviour
         }
     }
 
+    void checkIfOnGround()
+    {
+
+        Vector3 offset = new Vector3(0, 0, 0);
+
+        if (direction == 0)
+        {
+            offset = new Vector3(-0.2f, -0.8f, 0);
+            transform.localScale = new Vector2 (Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        } else if (direction == 1)
+        {
+            offset = new Vector3(0.2f, -0.8f, 0);
+            transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + offset, Vector2.down, 1f);
+
+        if (hit.collider != null)
+        {
+            
+                if (hit.distance <= 0.5f)
+                {
+                    
+                    onGround = true;
+                }
+                else
+                {
+                    onGround = false;
+                }
+            
+        } else
+        {
+            onGround = false;
+        }
+    }
     void moveTowardsLight()
     {
-        if(!inTheLight && inLightRange)
+        Rigidbody2D mybody = GetComponent<Rigidbody2D>();
+
+        if (!inTheLight && inLightRange && onGround)
         {
            
               
-            Rigidbody2D mybody = GetComponent<Rigidbody2D>();
+            
             Vector2 direction = new Vector2(lightPosition.x - myPosition.x,0);
             direction.Normalize();
-            mybody.MovePosition(Vector3.Lerp(myPosition, myPosition+direction*2, movementSpeedFactor));
+            mybody.MovePosition(Vector3.Lerp(myPosition , myPosition+direction*2, movementSpeedFactor));
 
+            
+            
 //            mybody.MovePosition(Vector3.Lerp(myPosition, new Vector2(lightPosition.x, myPosition.y), movementSpeedFactor));
                
             
         }
+
+        if (myPosition.x > lightPosition.x +  0.5f)
+        {
+            direction = 1;
+            
+        } else if (myPosition.x + 0.5f < lightPosition.x)
+        {
+            direction = 0;
+        }
+        
+       
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

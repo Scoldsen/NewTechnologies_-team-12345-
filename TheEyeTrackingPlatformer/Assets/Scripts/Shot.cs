@@ -9,7 +9,7 @@ public class Shot : MonoBehaviour
         if (!collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            Debug.Log("shot collision");
+
         }
     }
 }

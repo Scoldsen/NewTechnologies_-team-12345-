@@ -33,19 +33,23 @@ public class Line : MonoBehaviour
 
     public void CloseLine()
     {
-        Vector2 vector = new Vector2(points.First().x, points.First().y);
-        SetPoint(vector);
+        if (polygon != null)
+        {
+            Vector2 vector = new Vector2(points.First().x, points.First().y);
+            SetPoint(vector);
 
-        polygon.SetPath(0, points);
-       
+            polygon.SetPath(0, points);
+        }
     }
 
     void SetPoint(Vector2 point)
     {
         points.Add(point);
-
-        lineRenderer.positionCount = points.Count;
-        lineRenderer.SetPosition(points.Count - 1, point);
+        if (lineRenderer != null)
+        {
+            lineRenderer.positionCount = points.Count;
+            lineRenderer.SetPosition(points.Count - 1, point);
+        }
 
     }
 
@@ -60,9 +64,10 @@ public class Line : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         gm = GameObject.Find("_gm").GetComponent<gameManager>();
-        gm.removeDrawingAmount(gameObject.GetComponent<Rigidbody2D>().mass);
+        
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            gm.removeDrawingAmount(gameObject.GetComponent<Rigidbody2D>().mass);
             Destroy(gameObject);
         }
 

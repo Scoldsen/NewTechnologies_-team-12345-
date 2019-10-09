@@ -20,11 +20,11 @@ public class lightBehavior : MonoBehaviour
     public float FilterSmoothingFactor = 0.15f;
     public float speed = 0.1f;
     gameManager GameManager;
-
+    public bool blinking = false; // boolean to prevent death when light is simply blinking
     public float maxDistance = 5;
     public float minDistance = 1;
     public float shakeDistance = 0;
-
+    public bool lightOn = true;
     public float distance;
     private IEnumerator blinkCoroutine = null;
 
@@ -39,6 +39,8 @@ public class lightBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        //
         if (!keyboardActivated)
         {
             checkForEyesClosing();
@@ -61,20 +63,38 @@ public class lightBehavior : MonoBehaviour
             transform.Translate(direction);
            
         }
+
         dimLight();
 
         
     }
 
+  
+   
+    public float checkForDeath()
+    {
+        if (m_Light2D.enabled && !blinking) {
+            return m_Light2D.intensity;
+                } else
+        {
+            return 1;
+        }
+    }
     void checkForEyesClosing()
     {
         UserPresence user = TobiiAPI.GetUserPresence();
-        if(user.IsUserPresent())
+        if (m_Light2D != null)
         {
-            m_Light2D.enabled = true;
-        } else
-        {
-            m_Light2D.enabled = false;
+            if (user.IsUserPresent())
+            {
+                m_Light2D.enabled = true;
+                lightOn = true;
+            }
+            else
+            {
+                m_Light2D.enabled = false;
+                lightOn = false;
+            }
         }
     }
     private void UpdateGazeBubblePosition(GazePoint gazePoint)
@@ -93,13 +113,29 @@ public class lightBehavior : MonoBehaviour
     //dims light when boss gets closer
     public void dimLight()
     {
+        
         distance = Vector2.Distance(transform.position, boss.transform.position);
-        int mode = distance < minDistance ? 2 : distance < maxDistance ? 1 : 0;
-
+        int mode =  0;
+        if(distance < minDistance)
+        {
+            mode = 2;
+        } else
+        {
+            if (distance < maxDistance)
+            {
+                mode = 1;
+            }
+            else
+            {
+                mode = 0;
+            }
+        }
+        
         switch (mode)
         {
             case 0:
                 m_Light2D.intensity = 1;
+                
                 if (blinkCoroutine != null)
                 {
                     StopCoroutine(blinkCoroutine);
@@ -107,14 +143,18 @@ public class lightBehavior : MonoBehaviour
                 }
                 break;
             case 1:
+                blinking = true;
                 if (blinkCoroutine == null)
                 {
                     blinkCoroutine = Blinking();
+                   
                     StartCoroutine(blinkCoroutine);
                 }
                 break;
             case 2:
+                
                 m_Light2D.intensity = 0;
+                blinking = false;
                 if (blinkCoroutine != null)
                 {
                     StopCoroutine(blinkCoroutine);
@@ -123,7 +163,7 @@ public class lightBehavior : MonoBehaviour
                 break;
         }
 
-        if(distance <= shakeDistance)
+        if(distance <= shakeDistance && lightOn)
         {
             CauseCameraShake(0.05f, (0.2f*(Mathf.Abs(1 - shakeDistance/distance))));
         } else
@@ -163,9 +203,12 @@ public class lightBehavior : MonoBehaviour
     {
         while (true)
         {
+            
             m_Light2D.intensity = 0;
             yield return new WaitForSeconds(Random.Range(0.01f, 0.1f));
-            m_Light2D.intensity = 1;
+            m_Light2D.intensity = distance/maxDistance;
+            //m_Light2D.pointLightOuterRadius =   distance / maxDistance;
+            //m_Light2D.pointLightInnerRadius = distance / maxDistance;
             float waitTime = (distance - minDistance) / 5.0f;
             yield return new WaitForSeconds(Random.Range(0.1f, 1) * waitTime);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChildBehavior : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ChildBehavior : MonoBehaviour
     bool onGround = false;
     public int health = 3;
     int direction = 0; // 0 is right and 1 is left.
-
+    CameraShake camShake;
     Vector3 pos = Vector3.zero;
     Vector3 posOld = Vector3.zero;
 
@@ -28,6 +29,8 @@ public class ChildBehavior : MonoBehaviour
     {
         pos = transform.position;
         posOld = pos;
+        camShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+
     }
 
     void Update()
@@ -42,21 +45,18 @@ public class ChildBehavior : MonoBehaviour
 
         pos = transform.position;
 
-        if (posOld != pos)
+        if(!onGround)
         {
-            float distance = Vector3.Distance(pos, posOld);
-            print(distance);
-            posOld = pos;
-            animator.SetBool("isWalking", true);
-        } 
-        else animator.SetBool("isWalking", false);
-
+            animator.SetInteger("state", 2);
+        }
     }
 
     void checkForDeath()
-    {
+    {   
         if(health<=0)
         {
+            IEnumerator endTime = theEnd();
+            StartCoroutine(endTime);
             Debug.Log("Game over");
         }
     }
@@ -75,6 +75,10 @@ public class ChildBehavior : MonoBehaviour
         {
 
             inTheLight = true;
+            if (onGround)
+            {
+                animator.SetInteger("state", 0);
+            }
         }
         else
         {
@@ -130,6 +134,10 @@ public class ChildBehavior : MonoBehaviour
             direction.Normalize();
             mybody.MovePosition(Vector3.Lerp(myPosition , myPosition+direction*2, movementSpeedFactor));
 
+            if(onGround)
+            {
+                animator.SetInteger("state", 1);
+            }
             
             
 //            mybody.MovePosition(Vector3.Lerp(myPosition, new Vector2(lightPosition.x, myPosition.y), movementSpeedFactor));
@@ -153,7 +161,24 @@ public class ChildBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            health--;         
+            health--;
+            camShake.shakeDuration = 1f;
+            camShake.shakeAmount = 0.3f;
+            Vector2 direction =  transform.position - collision.transform.position;
+            direction.Normalize();
+            collision.rigidbody.AddForce(direction * 100);
+
+            
         }
+    }
+
+    private IEnumerator theEnd()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+        
+
     }
 }

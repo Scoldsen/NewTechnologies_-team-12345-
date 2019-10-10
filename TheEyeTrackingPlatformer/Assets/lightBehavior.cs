@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Tobii.Gaming;
+using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering.LWRP;
 
 public class lightBehavior : MonoBehaviour
@@ -166,11 +167,7 @@ public class lightBehavior : MonoBehaviour
         if(distance <= shakeDistance && lightOn)
         {
             CauseCameraShake(0.05f, (0.2f*(Mathf.Abs(1 - shakeDistance/distance))));
-        } else
-        {
-            CauseCameraShake(0, 0);
-        }
-
+        } 
         //change shake based on distance
         
     }
@@ -212,6 +209,16 @@ public class lightBehavior : MonoBehaviour
             float waitTime = (distance - minDistance) / 5.0f;
             yield return new WaitForSeconds(Random.Range(0.1f, 1) * waitTime);
         }
+    }
+
+    private IEnumerator theEnd()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+
+
     }
 
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class BossBehavior : MonoBehaviour
     bool countownTimerStarted = false;
     public float killDistance = 0f;
     private IEnumerator waitTimer = null;
+    private IEnumerator endTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,13 +71,26 @@ public class BossBehavior : MonoBehaviour
             
         }
 
-        if (playerLightControls.checkForDeath() <= 0.01)
+        if (playerLightControls.checkForDeath() <= 0.1)
         {
-            Debug.Log("Death");
+            
+            Time.timeScale = 0;
+            
             //play a scream
         }
     }
 
+    private IEnumerator theEnd()
+    {
+        Time.timeScale = 0;
+        
+        yield return new WaitForSeconds(3);
+        Debug.Log("okay");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+
+
+    }
     public void checkDrawingAmount()
     {
         if(drawingUsed >= drawingLimit)
@@ -197,4 +212,5 @@ public class BossBehavior : MonoBehaviour
             countownTimerStarted = false;
         }
     }
+
 }

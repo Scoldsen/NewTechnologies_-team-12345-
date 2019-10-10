@@ -34,9 +34,9 @@ public class Enemy2Contoroller : MonoBehaviour
                 SetTargetDirction();
                 jumpFlag = true;
                 rb.velocity = new Vector2(dir * jumpX, jumpY);
+                transform.localScale = new Vector3(dir, 1, 1);
             }
 
-            transform.localScale = new Vector3(dir, 1, 1);
         }
         else if (currentTime > stopTime + attackTime)
         {
@@ -61,5 +61,14 @@ public class Enemy2Contoroller : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Light"))
+        {
+            rb.velocity = new Vector2(-dir * jumpX, jumpY);
+            transform.localScale = new Vector3(-dir, 1, 1);
+        }
     }
 }

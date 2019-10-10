@@ -15,6 +15,7 @@ public class Enemy3Contoroller : MonoBehaviour
     private int dir;
     private float currentTime;
     private bool shotFlag;
+    private bool scared;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +29,23 @@ public class Enemy3Contoroller : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
+        if (scared)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            rb.velocity = new Vector2(2, rb.velocity.y);
+
+            if (currentTime > 1.0f)
+            {
+                currentTime = 0.0f;
+                scared = false;
+            }
+        }
+
         if (stopTime < currentTime && currentTime < stopTime + attackTime)
         {
             if (!shotFlag)
             {
-                
+                Debug.Log("hi");
                 GameObject shot = Instantiate(shotPrefab);
                 shot.transform.position = transform.position;
 
@@ -80,5 +93,14 @@ public class Enemy3Contoroller : MonoBehaviour
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Light"))
+        {
+            scared = true;
+            currentTime = 0.0f;
+        }
     }
 }

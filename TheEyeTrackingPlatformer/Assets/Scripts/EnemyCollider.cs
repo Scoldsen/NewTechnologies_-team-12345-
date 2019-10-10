@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyCollider : MonoBehaviour
 {
+    public GameObject enemy;
+
+    private EnemyContoroller enemyContoroller;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Light"))
         {
-            Debug.Log("collide with Player");
+            enemyContoroller = enemy.GetComponent<EnemyContoroller>();
+            enemyContoroller.scared = true;
         }
     }
 }

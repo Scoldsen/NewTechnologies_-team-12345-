@@ -21,4 +21,13 @@ public class EnemyArea : MonoBehaviour
             Debug.Log("find Player");
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            enemy.foundPlayer = false;
+            
+        }
+    }
 }

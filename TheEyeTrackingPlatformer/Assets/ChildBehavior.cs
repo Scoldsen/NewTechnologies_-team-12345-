@@ -12,6 +12,7 @@ public class ChildBehavior : MonoBehaviour
     public float maxLightDistance;
     public float movementSpeedFactor;
     public GameObject theLight;
+    gameManager gm;
     Vector2 lightPosition;
     Vector2 myPosition;
     bool onGround = false;
@@ -30,6 +31,7 @@ public class ChildBehavior : MonoBehaviour
         pos = transform.position;
         posOld = pos;
         camShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+        gm = GameObject.Find("_gm").GetComponent<gameManager>();
 
     }
 
@@ -55,8 +57,7 @@ public class ChildBehavior : MonoBehaviour
     {   
         if(health<=0)
         {
-            IEnumerator endTime = theEnd();
-            StartCoroutine(endTime);
+            gm.resetGame();
             Debug.Log("Game over");
         }
     }
@@ -69,6 +70,10 @@ public class ChildBehavior : MonoBehaviour
         } else
         {
             inLightRange = false;
+            if (onGround)
+            {
+                animator.SetInteger("state", 0);
+            }
         }
 
         if (Vector2.Distance(myPosition, lightPosition) <= lightFollowDistance)

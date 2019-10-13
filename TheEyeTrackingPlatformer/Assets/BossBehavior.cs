@@ -21,6 +21,7 @@ public class BossBehavior : MonoBehaviour
     public float killDistance = 0f;
     private IEnumerator waitTimer = null;
     private IEnumerator endTimer;
+    bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,8 +74,11 @@ public class BossBehavior : MonoBehaviour
 
         if (playerLightControls.checkForDeath() <= 0.1)
         {
-            
-            Time.timeScale = 0;
+            if (!dead)
+            { 
+                //gm.resetGame();
+                dead = true;
+            }
             
             //play a scream
         }
